@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">NotesApp</string>
+    <string name="type_your_discription_here">Type your discription here...</string>
+    <string name="type_tour_title_here">Type tour title here...</string>
+    <string name="enter_data">Create todo</string>
+</resources>
