@@ -5,8 +5,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardElevation="8dp"
     app:cardCornerRadius="8dp"
-    android:layout_margin="16dp"
+    android:layout_margin="8dp"
     android:background="@drawable/input"
+    app:cardBackgroundColor="@color/cardBackground"
+
 
 
     >
@@ -37,6 +39,7 @@
                     android:textColor="@color/black"
                     android:textSize="30sp"
                     android:fontFamily="serif-monospace"
+
                     />
                </LinearLayout>
 
