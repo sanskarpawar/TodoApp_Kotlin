@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="80dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -19,29 +20,29 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="70dp"
-                    android:text="@string/title"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="26dp"
-                    android:textStyle="bold"
-                    android:fontFamily="serif-monospace"
-                    />
+                <ImageView
 
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/accept"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginEnd="6dp"
+
+
+                    android:contentDescription="@string/mark_task_as_done" />
                 <TextView
                     android:id="@+id/txtNoteTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="70dp"
                     android:layout_marginStart="10dp"
-                    android:text="Todo thing which you saved......."
+                    android:text="@string/sampletext"
                     android:textColor="@color/black"
                     android:textSize="30sp"
                     android:fontFamily="serif-monospace"
-
                     />
-               </LinearLayout>
+
+
+            </LinearLayout>
 
 
 

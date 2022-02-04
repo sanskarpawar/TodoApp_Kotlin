@@ -37,6 +37,7 @@
             android:gravity="top"
             android:hint="@string/type_your_discription_here"
             android:inputType="textMultiLine"
+            android:paddingStart="10dp"
             android:paddingEnd="10dp"
 
             />

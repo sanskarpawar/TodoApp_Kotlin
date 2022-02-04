@@ -1,9 +1,12 @@
 package com.example.notesapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.notesapp.databinding.MainActivityBinding
 import com.example.realtimedatabasekotlin.User
@@ -23,10 +26,19 @@ class TodoListActivity : AppCompatActivity() {
         setContentView(R.layout.activity_todo_list)
 
         userRecyclerView =findViewById(R.id.todoList)
+        val fab: View = findViewById(R.id.addfloatingBtn)
+        userRecyclerView.layoutManager = LinearLayoutManager(this)
+
         userRecyclerView.setHasFixedSize(true)
 
         userArrayList = arrayListOf<User>()
         getUserData()
+
+        fab.setOnClickListener {
+
+            intent = Intent(applicationContext, MainActivity::class.java)
+            startActivity(intent)
+        }
         //Log.d( loopthing ,"Snapshot Exist or not")
 
 
@@ -35,6 +47,7 @@ class TodoListActivity : AppCompatActivity() {
     private fun getUserData() {
         database = FirebaseDatabase.getInstance().getReference("Todo")
         //Log.d( loopthing ,"Snapshot Exist or not")
+
        database.addValueEventListener(object  : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 //Log.d( loopthing ,"Snapshot Exist or not"+snapshot.exists())
@@ -46,11 +59,9 @@ class TodoListActivity : AppCompatActivity() {
                         val user = userSnapshot.getValue(User::class.java)
                         userArrayList.add(user!!)
 
-                        Log.d( loopthing ,"For Loop ")
+                       // Log.d( loopthing ,"For Loop ")
                     }
                     userRecyclerView.adapter =MyAdapter(userArrayList)
-
-
                 }
 
 

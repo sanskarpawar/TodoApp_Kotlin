@@ -19,7 +19,7 @@ class MyAdapter(private val userList : ArrayList<User>) : RecyclerView.Adapter<M
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentitem = userList[position]
-        holder.todoTitle.text = currentitem.edtTitleOfNote
+        holder.edtTitleOfNote.text = currentitem.edtTitleOfNote
 
     }
 
@@ -31,6 +31,6 @@ class MyAdapter(private val userList : ArrayList<User>) : RecyclerView.Adapter<M
 
     class MyViewHolder(itemview:View): RecyclerView.ViewHolder(itemview)
     {
-        val todoTitle : TextView = itemview.findViewById(R.id.txtNoteTitle)
+        val edtTitleOfNote : TextView = itemview.findViewById(R.id.txtNoteTitle)
     }
 }
