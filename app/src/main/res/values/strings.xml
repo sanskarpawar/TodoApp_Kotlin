@@ -6,4 +6,14 @@
     <string name="title">Title:</string>
     <string name="mark_task_as_done">Mark task as Done</string>
     <string name="sampletext">Todo thing which you saved.......</string>
+    <string name="delete_note">delete note</string>
+    <string name="list">list</string>
+    <string name="update_note">Upadate Note</string>
+    <string name="save_note">Save Note</string>
+    <string name="notetype">noteType</string>
+    <string name="titleoftask">edtTitleOfNote</string>
+    <string name="discriptionoftask">edtNoteDiscripton</string>
+    <string name="edit">Edit</string>
+    <string name="databaseRefTodo">Todo</string>
+    <string name="uniqueIdForTask">idForNote</string>
 </resources>

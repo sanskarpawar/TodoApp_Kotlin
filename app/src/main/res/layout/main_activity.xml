@@ -59,7 +59,23 @@
             android:textSize="20sp"
             android:layout_marginTop="30dp"
             android:layout_gravity="center_horizontal"
-            android:text="list" />
+            android:text="@string/list"
+
+
+            />
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="360dp"
+            android:layout_height="60dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal"
+            android:visibility="invisible"
+            android:text="@string/delete_note"
+
+
+            />
 
     </LinearLayout>
 </layout>

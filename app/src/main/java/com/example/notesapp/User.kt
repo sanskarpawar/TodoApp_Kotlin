@@ -1,6 +1,7 @@
 package com.example.realtimedatabasekotlin
 
-data class User(val edtTitleOfNote : String? = null,val edtNoteDiscripton : String? = null){
+import java.util.*
 
-
+data class User(val edtTitleOfNote : String? = null,val edtNoteDiscripton : String? = null,val idForNote : String? = null){
+    //val txtTimeStamp : String? = null
 }
