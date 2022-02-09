@@ -33,10 +33,9 @@ class TodoListActivity : AppCompatActivity() {
         userRecyclerView.layoutManager = LinearLayoutManager(this)
 
         //database = FirebaseDatabase.getInstance().getReference(getString(R.string.databaseRefTodo))
-
         userRecyclerView.setHasFixedSize(true)
 
-        userArrayList = arrayListOf<User>()
+        userArrayList = arrayListOf()
         getUserData()
 
         fab.setOnClickListener {
@@ -62,7 +61,7 @@ class TodoListActivity : AppCompatActivity() {
        database.addValueEventListener(object  : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
 
-
+                    userArrayList.clear()
                 if(snapshot.exists()){
 
                     for (userSnapshot in snapshot.children)
@@ -78,12 +77,11 @@ class TodoListActivity : AppCompatActivity() {
                           val idForNote = userArrayList[position].idForNote
                             val edtTitleOfNote = userArrayList[position].edtTitleOfNote
                            val edtNoteDiscripton = userArrayList[position].edtNoteDiscripton
-
                             val intent = Intent(this@TodoListActivity,MainActivity::class.java)
                             intent.putExtra("noteType", "Edit")
-                            val b = intent.putExtra(getString(R.string.titleoftask), edtTitleOfNote)
+                            intent.putExtra(getString(R.string.titleoftask), edtTitleOfNote)
                             intent.putExtra(getString(R.string.discriptionoftask),edtNoteDiscripton)
-                            val c =  intent.putExtra(getString(R.string.uniqueIdForTask),idForNote)
+                            intent.putExtra(getString(R.string.uniqueIdForTask),idForNote)
                             Log.d("idofnote", "$idForNote" )
                             Log.d("noteTitle", "$edtTitleOfNote" )
                             startActivity(intent)
@@ -96,17 +94,7 @@ class TodoListActivity : AppCompatActivity() {
 
 
 
-                  /*  adapter.setOnItemClickListener(object: MyAdapter.onItemClickListener){
 
-                         }
-
-                            val delete = findViewById<Button>(R.id.btnDelete)
-                            delete.setOnClickListener {
-
-                                //database.child(todoId.toString()).removeValue().addOnCompleteListener(new onCom)
-                                Toast.makeText(this@TodoListActivity,"you Clicked on $todoId ",Toast.LENGTH_LONG).show()
-
-                            }*/
 
 
 
@@ -135,3 +123,46 @@ class TodoListActivity : AppCompatActivity() {
       //  userRecyclerView.sta
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*  adapter.setOnItemClickListener(object: MyAdapter.onItemClickListener){
+
+                        }
+
+                           val delete = findViewById<Button>(R.id.btnDelete)
+                           delete.setOnClickListener {
+
+                               //database.child(todoId.toString()).removeValue().addOnCompleteListener(new onCom)
+                               Toast.makeText(this@TodoListActivity,"you Clicked on $todoId ",Toast.LENGTH_LONG).show()
+
+                           }*/
