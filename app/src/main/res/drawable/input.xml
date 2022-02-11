@@ -1,11 +1,11 @@
 <!-- drawable/input.xml -->
 <vector
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:aapt="http://schemas.android.com/aapt"
-    android:width="360dp"
-    android:height="50dp"
-    android:viewportWidth="360"
-    android:viewportHeight="50"
+
+    android:width="60dp"
+    android:height="40dp"
+    android:viewportWidth="300"
+    android:viewportHeight="100"
     >
 
     <group>
@@ -16,7 +16,7 @@
 
         <path
             android:pathData="M0 0V50H360V0"
-            android:fillColor="#B9CED1"
+            android:fillColor="#00B0FF"
             />
 
     </group>

@@ -8,4 +8,5 @@
     <color name="darkwhite">#E8E1E1</color>
     <color name="black">#0B0A0A</color>
     <color name="mainactivityback">#EFEDED</color>
+    <color name="cardcolor">#4F5DE8A6</color>
 </resources>

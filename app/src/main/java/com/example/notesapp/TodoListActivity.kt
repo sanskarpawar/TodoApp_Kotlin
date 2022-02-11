@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.realtimedatabasekotlin.User
@@ -27,7 +29,8 @@ class TodoListActivity : AppCompatActivity() {
 
         userRecyclerView =findViewById(R.id.todoList)
 
-
+        //actionBar?.setDisplayShowCustomEnabled(true)
+        //actionBar?.setCustomView(R.layout.action_bar)
         val fab: View = findViewById(R.id.addfloatingBtn)
         //val donetask: ImageView = findViewById(R.id.imgDone)
         userRecyclerView.layoutManager = LinearLayoutManager(this)
@@ -48,14 +51,14 @@ class TodoListActivity : AppCompatActivity() {
         }*/
 
           //  val recyclerView = findViewById<RecyclerView>(R.id.todoList)
-
-
+          //  val sizeOfList : TextView = findViewById(R.id.sizeOfList)
+          //  sizeOfList.text = userArrayList.size
 
 
     }
 
     private fun getUserData() {
-        database = FirebaseDatabase.getInstance().getReference(getString(R.string.databaseRefTodo))
+        database = FirebaseDatabase.getInstance().getReference(Constants.ROOT_NODE_TODO)
 
 
        database.addValueEventListener(object  : ValueEventListener{
@@ -72,21 +75,24 @@ class TodoListActivity : AppCompatActivity() {
                     }
                     val adapter = MyAdapter(userArrayList)
                     userRecyclerView.adapter = adapter
+
+
                     adapter.setOnItemClickListener(object :MyAdapter.onItemClickListener{
                         override fun onItemClick(position: Int) {
-                          val idForNote = userArrayList[position].idForNote
+                            val idForNote = userArrayList[position].idForNote
                             val edtTitleOfNote = userArrayList[position].edtTitleOfNote
-                           val edtNoteDiscripton = userArrayList[position].edtNoteDiscripton
+                            val edtNoteDiscripton = userArrayList[position].edtNoteDiscripton
                             val intent = Intent(this@TodoListActivity,MainActivity::class.java)
-                            intent.putExtra("noteType", "Edit")
-                            intent.putExtra(getString(R.string.titleoftask), edtTitleOfNote)
-                            intent.putExtra(getString(R.string.discriptionoftask),edtNoteDiscripton)
-                            intent.putExtra(getString(R.string.uniqueIdForTask),idForNote)
+                            intent.putExtra(Constants.NOTE_TYPE, Constants.EDIT)
+                            intent.putExtra(Constants.TITLE_OF_TASK, edtTitleOfNote)
+                            intent.putExtra(Constants.DISCRIPTION_OF_TASK,edtNoteDiscripton)
+                            intent.putExtra(Constants.ID_OF_TASK,idForNote)
+
                             Log.d("idofnote", "$idForNote" )
                             Log.d("noteTitle", "$edtTitleOfNote" )
-                            startActivity(intent)
 
-                            Toast.makeText(this@TodoListActivity,"you Clicked on $edtTitleOfNote ",Toast.LENGTH_LONG).show()
+                            startActivity(intent)
+                            //Toast.makeText(this@TodoListActivity,"you Clicked on $edtTitleOfNote ",Toast.LENGTH_LONG).show()
                         }
 
 

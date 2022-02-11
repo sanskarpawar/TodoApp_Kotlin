@@ -47,18 +47,17 @@ class MainActivity : AppCompatActivity() {
 
         if(noteType.equals(getString(R.string.edit))){
             Log.d("noteType", "$noteType" )
-            val noteTitle=intent.getStringExtra(getString(R.string.titleoftask))
-           val noteDesc=intent.getStringExtra(getString(R.string.discriptionoftask))
-            // val id = intent.getStringExtra("todoID")
-            val noteid = intent.getStringExtra(getString(R.string.uniqueIdForTask))
+            val noteTitle=intent.getStringExtra(Constants.TITLE_OF_TASK)
+           val noteDesc=intent.getStringExtra(Constants.DISCRIPTION_OF_TASK)
+            val noteid = intent.getStringExtra(Constants.ID_OF_TASK)
             Log.d("idofnote", "$noteid" )
             Log.d("noteTitle", "$noteTitle" )
-            enterButton.text = getString(R.string.update_note)
+            enterButton.text = Constants.UPDATE_BUTTON_TEXT
             edtTitleOfNote.setText(noteTitle)
             edtNoteDiscripton.setText(noteDesc)
 
             //Delete functionality
-            if(noteType.equals("Edit"))
+            if(noteType.equals(Constants.EDIT))
             {
                 binding.btnDelete.visibility= View.VISIBLE
                 binding.btnDelete.setOnClickListener {
@@ -68,27 +67,20 @@ class MainActivity : AppCompatActivity() {
                             edtNoteDiscripton.text.clear()
 
 
-                            Toast.makeText(this, "Successfully Deleted", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, Constants.TASK_DELETED_MSG, Toast.LENGTH_SHORT).show()
 
                         }.addOnFailureListener {
-                            Toast.makeText(this, " Failed to delete", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, Constants.FAILED_DELETED_MSG, Toast.LENGTH_SHORT).show()
                         }
                     }
 
                 }
-            }else
-            {
-                Toast.makeText(this, "Please create note ", Toast.LENGTH_SHORT).show()
             }
-
-
-
-
 
         }
         else
         {
-            enterButton.text = getString(R.string.save_note)
+            enterButton.text = Constants.ENTER_BUTTON_TEXT
 
         }
 
@@ -105,6 +97,7 @@ class MainActivity : AppCompatActivity() {
             val titleofnote = binding.edtTitleOfNote.text.toString()
             val discription = binding.edtNoteDiscripton.text.toString()
             val idForNote = UUID.randomUUID().toString()
+            val doneNot = Constants.NOT_DONE_TEXT
 
 
 
@@ -117,37 +110,39 @@ class MainActivity : AppCompatActivity() {
 
             //val timetext = ServerValue.TIMESTAMP.toString()
 
-            database = FirebaseDatabase.getInstance().getReference(getString(R.string.databaseRefTodo))
+            database = FirebaseDatabase.getInstance().getReference(Constants.ROOT_NODE_TODO)
 
-            val User = User(titleofnote, discription,idForNote)
-            if(!noteType.equals("Edit")) {
+            val User = User(titleofnote, discription,idForNote,doneNot)
+            if(!noteType.equals(Constants.EDIT)) {
 
                 if (!TextUtils.isEmpty(titleofnote) && !TextUtils.isEmpty(discription)) {
 
                     database.child(idForNote).setValue(User).addOnSuccessListener {
                         binding.edtTitleOfNote.text.clear()
                         binding.edtNoteDiscripton.text.clear()
+
                         //database.child(idForNote).child("timestamp").setValue(ServerValue.TIMESTAMP)
 
-                        Toast.makeText(this, "Successfully Saved", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, Constants.TASK_SAVED_MSG, Toast.LENGTH_SHORT).show()
 
                     }.addOnFailureListener {
 
-                        Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, Constants.FAILED_SAVE_MSG, Toast.LENGTH_SHORT).show()
 
 
                     }
 
 
                 } else
-                    Toast.makeText(this, "Fill empty fields", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, Constants.FILL_EMPTY_MSG, Toast.LENGTH_SHORT).show()
             }
             else
             {
                 val note= mapOf(
-                    getString(R.string.titleoftask) to titleofnote,
-                    getString(R.string.discriptionoftask) to discription,
-                    getString(R.string.uniqueIdForTask) to noteidp
+                    Constants.TITLE_OF_TASK to titleofnote,
+                    Constants.DISCRIPTION_OF_TASK to discription,
+                    Constants.ID_OF_TASK to noteidp
+
                 )
 
                 noteidp?.let { it1 ->
@@ -155,9 +150,9 @@ class MainActivity : AppCompatActivity() {
                         edtTitleOfNote.text.clear()
                         edtNoteDiscripton.text.clear()
 
-                        Toast.makeText(this, "Successfully Updated", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, Constants.TASK_UPDATE_MSG, Toast.LENGTH_SHORT).show()
                     }.addOnFailureListener {
-                        Toast.makeText(this, "Failed to update", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, Constants.FAILED_UPDATE_MSG, Toast.LENGTH_SHORT).show()
                     }
                 }
 
