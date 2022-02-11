@@ -29,13 +29,12 @@ class TodoListActivity : AppCompatActivity() {
 
         userRecyclerView =findViewById(R.id.todoList)
 
-        //actionBar?.setDisplayShowCustomEnabled(true)
-        //actionBar?.setCustomView(R.layout.action_bar)
+
         val fab: View = findViewById(R.id.addfloatingBtn)
-        //val donetask: ImageView = findViewById(R.id.imgDone)
+
         userRecyclerView.layoutManager = LinearLayoutManager(this)
 
-        //database = FirebaseDatabase.getInstance().getReference(getString(R.string.databaseRefTodo))
+
         userRecyclerView.setHasFixedSize(true)
 
         userArrayList = arrayListOf()
