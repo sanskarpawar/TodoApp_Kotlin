@@ -2,7 +2,6 @@ package com.example.notesapp
 
 class Constants {
 
-
         companion object {
             const val ROOT_NODE_TODO = "Todo"
             const val TITLE_OF_TASK = "edtTitleOfNote"

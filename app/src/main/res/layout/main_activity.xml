@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="36dp"
-
+            android:fontFamily="@font/lato"
             android:hint="@string/type_tour_title_here"
 
             android:inputType="text"
@@ -32,6 +32,7 @@
             android:layout_height="350dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
+            android:fontFamily="@font/lato"
 
             android:background="@color/darkwhite"
             android:gravity="top"
@@ -46,6 +47,7 @@
             android:id="@+id/enterButton"
             android:layout_width="360dp"
             android:layout_height="60dp"
+            android:fontFamily="@font/lato"
             android:textColor="@color/colorPrimary"
             android:textSize="20sp"
             android:layout_marginTop="30dp"
@@ -56,6 +58,7 @@
             android:layout_width="360dp"
             android:layout_height="60dp"
             android:textColor="@color/colorPrimary"
+            android:fontFamily="@font/lato"
             android:textSize="20sp"
             android:layout_marginTop="30dp"
             android:layout_gravity="center_horizontal"
@@ -69,6 +72,7 @@
             android:layout_height="60dp"
             android:textColor="@color/colorPrimary"
             android:textSize="20sp"
+            android:fontFamily="@font/lato"
             android:layout_marginTop="20dp"
             android:layout_gravity="center_horizontal"
             android:visibility="invisible"

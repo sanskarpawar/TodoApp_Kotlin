@@ -62,6 +62,8 @@ class MyAdapter(private val userList: ArrayList<User>) : RecyclerView.Adapter<My
             holder.cardviewitem.setBackgroundResource(R.color.cardcolor)
             holder.donetask.setImageResource(R.drawable.donetask)
 
+            holder.absoluteAdapterPosition
+
         }
 
 
