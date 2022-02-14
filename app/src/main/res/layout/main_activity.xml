@@ -10,9 +10,7 @@
         android:orientation="vertical"
         tools:context=".MainActivity"
        >
-
-
-        <EditText
+   <EditText
             android:id="@+id/edtTitleOfNote"
             android:layout_width="360dp"
             android:layout_height="wrap_content"
@@ -20,29 +18,23 @@
             android:layout_marginTop="36dp"
             android:fontFamily="@font/lato"
             android:hint="@string/type_tour_title_here"
-
             android:inputType="text"
             android:paddingStart="20dp"
             android:paddingEnd="20dp" />
-
-
         <EditText
             android:id="@+id/edtNoteDiscripton"
             android:layout_width="360dp"
-            android:layout_height="350dp"
+            android:layout_height="250dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/lato"
-
             android:background="@color/darkwhite"
             android:gravity="top"
             android:hint="@string/type_your_discription_here"
             android:inputType="textMultiLine"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
-
             />
-
         <Button
             android:id="@+id/enterButton"
             android:layout_width="360dp"
@@ -63,8 +55,6 @@
             android:layout_marginTop="30dp"
             android:layout_gravity="center_horizontal"
             android:text="@string/list"
-
-
             />
         <Button
             android:id="@+id/btnDelete"
@@ -77,8 +67,6 @@
             android:layout_gravity="center_horizontal"
             android:visibility="invisible"
             android:text="@string/delete_note"
-
-
             />
 
     </LinearLayout>

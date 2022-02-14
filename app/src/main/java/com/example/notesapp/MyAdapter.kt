@@ -5,14 +5,16 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.realtimedatabasekotlin.User
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import org.w3c.dom.Text
+
 
 class MyAdapter(private val userList: ArrayList<User>) : RecyclerView.Adapter<MyAdapter.MyViewHolder>()
 {
@@ -44,9 +46,11 @@ class MyAdapter(private val userList: ArrayList<User>) : RecyclerView.Adapter<My
         val currentitem = userList[position]
         holder.titleOfNote.text = currentitem.edtTitleOfNote
         val done= userList[position].doneOrNot
+        val idForNote = userList[position].idForNote
+        database = FirebaseDatabase.getInstance().getReference(Constants.ROOT_NODE_TODO)
         holder.donetask.setOnClickListener {
-            database = FirebaseDatabase.getInstance().getReference(Constants.ROOT_NODE_TODO)
-           val idForNote = userList[position].idForNote
+
+
             if (idForNote != null) {
                 if (done != null) {
 
@@ -56,10 +60,21 @@ class MyAdapter(private val userList: ArrayList<User>) : RecyclerView.Adapter<My
             }
 
         }
+        holder.deletebtn.setOnClickListener {
+            idForNote?.let { it1 ->
+                database.child(it1).removeValue();
+
+
+                }
+            }
+
+
+
         Log.d(Constants.DONE_TEXT,"$done")
         if(done==Constants.DONE_TEXT)
         {
             holder.cardviewitem.setBackgroundResource(R.color.cardcolor)
+
             holder.donetask.setImageResource(R.drawable.donetask)
 
             holder.absoluteAdapterPosition
@@ -78,11 +93,11 @@ class MyAdapter(private val userList: ArrayList<User>) : RecyclerView.Adapter<My
         val donetask : ImageView = itemview.findViewById(R.id.imgDone)
 
         val cardviewitem : CardView = itemview.findViewById(R.id.carditem)
+        val deletebtn : Button = itemview.findViewById(R.id.btnDelete)
 
         init {
 
             itemView.setOnClickListener {
-
                 listener.onItemClick(bindingAdapterPosition)
 
             }

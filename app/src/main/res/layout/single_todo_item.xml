@@ -3,69 +3,73 @@
     android:id="@+id/carditem"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
+    android:layout_height="100dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardElevation="8dp"
-    app:cardCornerRadius="20dp"
+    app:cardCornerRadius="15dp"
     android:layout_margin="8dp"
 
     app:cardBackgroundColor="@color/cardBackground"
 
-
-
     >
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
+                android:weightSum="100"
+
                 >
                 <ImageView
                     android:id="@+id/imgDone"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:src="@drawable/tickmark"
                     android:layout_marginStart="6dp"
                     android:layout_marginEnd="6dp"
-                    android:contentDescription="@string/mark_task_as_done" />
+                    android:contentDescription="@string/mark_task_as_done"
+                    android:layout_weight="10"
+                    />
                 <TextView
                     android:id="@+id/txtNoteTitle"
-                    android:layout_width="280dp"
-                    android:layout_height="70dp"
-                    android:layout_marginStart="10dp"
-                    android:text="@string/sampletext"
-                    android:textColor="@color/black"
-                    android:textSize="25sp"
-                    android:fontFamily="@font/lato"
-
-                    />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    >
-
-                <TextView
-                    android:id="@+id/txttimestamp"
-                    android:layout_width="40dp"
-                    android:layout_height="15dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/lato"
-                    android:text="May 12"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/sampletext"
                     android:textColor="@color/black"
-                    android:textSize="12sp"
+                    android:textSize="25sp"
+                    android:layout_weight="80"
+                    android:fontFamily="@font/lato"
 
                     />
+
+
+                <Button
+                    android:id="@+id/btnDelete"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="30dp"
+                    android:layout_weight="10"
+                    android:background="@drawable/trash"
+
+                    />
+
+
+
 
 
 
                 </LinearLayout>
 
-            </LinearLayout>
+
 
 
 
