@@ -39,8 +39,8 @@
             android:id="@+id/enterButton"
             android:layout_width="360dp"
             android:layout_height="60dp"
-            android:fontFamily="@font/lato"
-            android:textColor="@color/colorPrimary"
+            android:fontFamily="@font/lato_bold"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:layout_marginTop="30dp"
             android:layout_gravity="center_horizontal"
@@ -49,25 +49,25 @@
             android:id="@+id/showList"
             android:layout_width="360dp"
             android:layout_height="60dp"
-            android:textColor="@color/colorPrimary"
-            android:fontFamily="@font/lato"
+            android:textColor="@color/black"
+            android:fontFamily="@font/lato_bold"
             android:textSize="20sp"
             android:layout_marginTop="30dp"
             android:layout_gravity="center_horizontal"
             android:text="@string/list"
             />
+
         <Button
             android:id="@+id/btnDelete"
-            android:layout_width="360dp"
+            android:layout_width="350dp"
             android:layout_height="60dp"
-            android:textColor="@color/colorPrimary"
-            android:textSize="20sp"
-            android:fontFamily="@font/lato"
-            android:layout_marginTop="20dp"
             android:layout_gravity="center_horizontal"
-            android:visibility="invisible"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/lato_bold"
             android:text="@string/delete_note"
-            />
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:visibility="invisible" />
 
     </LinearLayout>
 </layout>

@@ -27,6 +27,10 @@ class TodoListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_todo_list)
 
+
+        getSupportActionBar()?.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM)
+        getSupportActionBar()?.setCustomView(R.layout.abs);
+
         userRecyclerView =findViewById(R.id.todoList)
 
 
@@ -69,14 +73,17 @@ class TodoListActivity : AppCompatActivity() {
                     for (userSnapshot in snapshot.children)
                     {
                         val user = userSnapshot.getValue(User::class.java)
+
                         userArrayList.add(user!!)
 
+                        Log.d("USER", "${user.toString()}" )
                     }
                     val adapter = MyAdapter(userArrayList)
                     userRecyclerView.adapter = adapter
 
 
-                    adapter.setOnItemClickListener(object :MyAdapter.onItemClickListener{
+                    adapter.setOnItemClickListener(object :MyAdapter.onItemClickListener
+                    {
                         override fun onItemClick(position: Int) {
                             val idForNote = userArrayList[position].idForNote
                             val edtTitleOfNote = userArrayList[position].edtTitleOfNote
@@ -96,17 +103,6 @@ class TodoListActivity : AppCompatActivity() {
 
 
                     }){}
-
-
-
-
-
-
-
-
-
-
-
 
 
                 }

@@ -3,12 +3,11 @@
     android:id="@+id/carditem"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardElevation="8dp"
     app:cardCornerRadius="15dp"
     android:layout_margin="8dp"
-
     app:cardBackgroundColor="@color/cardBackground"
 
     >
@@ -21,20 +20,25 @@
                 android:weightSum="100"
 
                 >
+
                 <ImageView
                     android:id="@+id/imgDone"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/tickmark"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
                     android:layout_marginStart="6dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="6dp"
-                    android:contentDescription="@string/mark_task_as_done"
+                    android:layout_marginBottom="10dp"
                     android:layout_weight="10"
+                    android:contentDescription="@string/mark_task_as_done"
+                    android:src="@drawable/tickmark"
+
                     />
+
                 <TextView
                     android:id="@+id/txtNoteTitle"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
@@ -50,15 +54,15 @@
 
                 <Button
                     android:id="@+id/btnDelete"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="10dp"
+                    android:layout_width="10dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="25dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginEnd="7dp"
                     android:layout_marginBottom="30dp"
                     android:layout_weight="10"
-                    android:background="@drawable/trash"
+                    android:background="@drawable/ic_delete_black_24dp"
+
 
                     />
 

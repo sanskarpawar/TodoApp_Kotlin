@@ -48,6 +48,7 @@ class MyAdapter(private val userList: ArrayList<User>) : RecyclerView.Adapter<My
         val done= userList[position].doneOrNot
         val idForNote = userList[position].idForNote
         database = FirebaseDatabase.getInstance().getReference(Constants.ROOT_NODE_TODO)
+
         holder.donetask.setOnClickListener {
 
 
@@ -60,6 +61,7 @@ class MyAdapter(private val userList: ArrayList<User>) : RecyclerView.Adapter<My
             }
 
         }
+
         holder.deletebtn.setOnClickListener {
             idForNote?.let { it1 ->
                 database.child(it1).removeValue();

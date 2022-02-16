@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import com.example.notesapp.databinding.MainActivityBinding
 import com.example.realtimedatabasekotlin.User
@@ -31,6 +32,12 @@ class MainActivity : AppCompatActivity() {
         binding = MainActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
+
+        getSupportActionBar()?.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM)
+        getSupportActionBar()?.setCustomView(R.layout.abs);
+
         binding.showList.setOnClickListener {
             intent = Intent(applicationContext, TodoListActivity::class.java)
             startActivity(intent)
@@ -48,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         if(noteType.equals(getString(R.string.edit))){
             Log.d("noteType", "$noteType" )
             val noteTitle=intent.getStringExtra(Constants.TITLE_OF_TASK)
-           val noteDesc=intent.getStringExtra(Constants.DISCRIPTION_OF_TASK)
+            val noteDesc=intent.getStringExtra(Constants.DISCRIPTION_OF_TASK)
             val noteid = intent.getStringExtra(Constants.ID_OF_TASK)
             Log.d("idofnote", "$noteid" )
             Log.d("noteTitle", "$noteTitle" )
@@ -84,28 +91,12 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-
-
-
-
-
-
         binding.enterButton.setOnClickListener {
-
-
 
             val titleofnote = binding.edtTitleOfNote.text.toString()
             val discription = binding.edtNoteDiscripton.text.toString()
             val idForNote = UUID.randomUUID().toString()
             val doneNot = Constants.NOT_DONE_TEXT
-
-
-
-
-
-
-
-
 
 
             //val timetext = ServerValue.TIMESTAMP.toString()

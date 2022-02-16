@@ -8,14 +8,6 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-
-
-
-
-
-
-
-
     <style name="FullscreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="android:windowActionBar">false</item>
@@ -29,5 +21,14 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="fab_square" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">18dp</item>
+        <item name="colorAccent">#2C6CD8</item>
+        <item name="colorOnBackground">#2C6CD8</item>
+        <item name="color">#2C6CD8</item>
+
+    </style>
 
 </resources>

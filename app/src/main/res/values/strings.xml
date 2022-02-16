@@ -16,4 +16,5 @@
     <string name="edit">Edit</string>
     <string name="databaseRefTodo">Todo</string>
     <string name="uniqueIdForTask">idForNote</string>
+    <string name="AppName">My Todo</string>
 </resources>
