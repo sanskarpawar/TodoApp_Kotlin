@@ -19,8 +19,11 @@ class TodoListActivity : AppCompatActivity() {
 
    // private lateinit var binding : MainActivityBinding
     private lateinit var database : DatabaseReference
+    private lateinit var databasedone : DatabaseReference
     private lateinit var  userRecyclerView: RecyclerView
+    private lateinit var  userRecyclerViewDone: RecyclerView
     private lateinit var userArrayList: ArrayList<User>
+    private lateinit var userArrayListDone: ArrayList<User>
     private lateinit var loopthing : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,17 +35,21 @@ class TodoListActivity : AppCompatActivity() {
         getSupportActionBar()?.setCustomView(R.layout.abs);
 
         userRecyclerView =findViewById(R.id.todoList)
-
+        userRecyclerViewDone=findViewById(R.id.todoListForDone)
 
         val fab: View = findViewById(R.id.addfloatingBtn)
 
         userRecyclerView.layoutManager = LinearLayoutManager(this)
-
+        userRecyclerViewDone.layoutManager = LinearLayoutManager(this)
 
         userRecyclerView.setHasFixedSize(true)
+        userRecyclerViewDone.setHasFixedSize(true)
+
 
         userArrayList = arrayListOf()
+        userArrayListDone =arrayListOf()
         getUserData()
+        getUserDataCompleted()
 
         fab.setOnClickListener {
 
@@ -60,7 +67,8 @@ class TodoListActivity : AppCompatActivity() {
 
     }
 
-    private fun getUserData() {
+    private fun getUserData()
+    {
         database = FirebaseDatabase.getInstance().getReference(Constants.ROOT_NODE_TODO)
 
 
@@ -68,6 +76,7 @@ class TodoListActivity : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
 
                     userArrayList.clear()
+
                 if(snapshot.exists()){
 
                     for (userSnapshot in snapshot.children)
@@ -80,6 +89,7 @@ class TodoListActivity : AppCompatActivity() {
                     }
                     val adapter = MyAdapter(userArrayList)
                     userRecyclerView.adapter = adapter
+
 
 
                     adapter.setOnItemClickListener(object :MyAdapter.onItemClickListener
@@ -120,6 +130,69 @@ class TodoListActivity : AppCompatActivity() {
 
 
       //  userRecyclerView.sta
+    }
+
+    private fun getUserDataCompleted()
+    {
+
+        databasedone = FirebaseDatabase.getInstance().getReference("Completed")
+
+        databasedone.addValueEventListener(object  : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                userArrayListDone.clear()
+                if(snapshot.exists()){
+
+                    for (userSnapshot in snapshot.children)
+                    {
+                        val user = userSnapshot.getValue(User::class.java)
+
+                        userArrayListDone.add(user!!)
+
+                        Log.d("USER", "${user.toString()}" )
+                    }
+                    val adapter = MyAdapterForDone(userArrayListDone)
+                    userRecyclerViewDone.adapter = adapter
+
+
+                    /*adapter.setOnItemClickListener(object :MyAdapterForDone.onItemClickListener
+                        {
+                        override fun onItemClick(position: Int) {
+                            val idForNote = userArrayListDone[position].idForNote
+                            val edtTitleOfNote = userArrayListDone[position].edtTitleOfNote
+                            val edtNoteDiscripton = userArrayListDone[position].edtNoteDiscripton
+                            val intent = Intent(this@TodoListActivity,MainActivity::class.java)
+                            intent.putExtra(Constants.NOTE_TYPE, Constants.EDIT)
+                            intent.putExtra(Constants.TITLE_OF_TASK, edtTitleOfNote)
+                            intent.putExtra(Constants.DISCRIPTION_OF_TASK,edtNoteDiscripton)
+                            intent.putExtra(Constants.ID_OF_TASK,idForNote)
+
+                            Log.d("idofnote", "$idForNote" )
+                            Log.d("noteTitle", "$edtTitleOfNote" )
+
+                            startActivity(intent)
+                            //Toast.makeText(this@TodoListActivity,"you Clicked on $edtTitleOfNote ",Toast.LENGTH_LONG).show()
+                        }
+
+
+                    })*/ {}
+
+
+                }
+
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
+
+        })
+
+
+
+        //  userRecyclerView.sta
     }
 }
 

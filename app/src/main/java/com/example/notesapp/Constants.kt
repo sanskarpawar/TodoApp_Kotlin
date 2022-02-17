@@ -21,6 +21,7 @@ class Constants {
             const val FILL_EMPTY_MSG ="Fill empty fields"
             const val TASK_UPDATE_MSG ="Successfully updated"
             const val FAILED_UPDATE_MSG = "Failed to update"
+            const val COMPLETED = "Completed"
 
 
     }

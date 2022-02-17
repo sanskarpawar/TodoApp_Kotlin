@@ -20,6 +20,7 @@ class MyAdapter(private val userList: ArrayList<User>) : RecyclerView.Adapter<My
 {
     private lateinit var mListener : onItemClickListener
     private lateinit var database : DatabaseReference
+    private lateinit var databasedone : DatabaseReference
 
     interface onItemClickListener{
 
@@ -45,25 +46,38 @@ class MyAdapter(private val userList: ArrayList<User>) : RecyclerView.Adapter<My
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentitem = userList[position]
         holder.titleOfNote.text = currentitem.edtTitleOfNote
+
+        val title = userList[position].edtTitleOfNote
         val done= userList[position].doneOrNot
         val idForNote = userList[position].idForNote
+        val discription = userList[position].edtNoteDiscripton
         database = FirebaseDatabase.getInstance().getReference(Constants.ROOT_NODE_TODO)
-
+        databasedone = FirebaseDatabase.getInstance().getReference("Completed")
         holder.donetask.setOnClickListener {
 
 
-            if (idForNote != null) {
-                if (done != null) {
+            if (idForNote != null)
+            { if (done != null) {
+                if (title != null){
+                    if (discription != null){
 
-                    database.child(idForNote).child(Constants.TASK_DONE_OR_NOT).setValue(Constants.DONE_TEXT)
+                        val User = User(title, discription,idForNote,"done")
 
-                }
-            }
+                        database.child(idForNote).child(Constants.TASK_DONE_OR_NOT).setValue(Constants.DONE_TEXT)
+                        userList.clear()
+                        databasedone.child(idForNote).setValue(User)
+                        database.child(idForNote).removeValue();
+
+
+
+
+                }}}}
 
         }
 
         holder.deletebtn.setOnClickListener {
             idForNote?.let { it1 ->
+                userList.clear()
                 database.child(it1).removeValue();
 
 
@@ -72,16 +86,17 @@ class MyAdapter(private val userList: ArrayList<User>) : RecyclerView.Adapter<My
 
 
 
-        Log.d(Constants.DONE_TEXT,"$done")
+        /*Log.d(Constants.DONE_TEXT,"$done")
         if(done==Constants.DONE_TEXT)
         {
-            holder.cardviewitem.setBackgroundResource(R.color.cardcolor)
+            holder.cardviewitem.setBackgroundResource(R.color. cardcolor)
 
             holder.donetask.setImageResource(R.drawable.donetask)
 
-            holder.absoluteAdapterPosition
 
-        }
+            //holder.absoluteAdapterPosition
+
+        }*/
 
 
 
